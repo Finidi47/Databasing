@@ -1,9 +1,33 @@
 {% extends 'master.html' %}
 
 {% block title %}
-	<title>Sacco Customer</title>
+    <title>Sacco Customer</title>
 {% endblock %}
 
 {% block content %}
-    
+    <div class="container">
+        <h2>Sacco Customers</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Joining Date</th>
+            </tr>
+            
+            {% for customer in customers %}
+            	<tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.first_name }}</td>
+                    <td>{{ customer.last_name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.created_at }}</td>
+                </tr>
+            {% empty %}
+            	<p>No customers n the sacco</p>
+            {% endfor %}
+            
+        </table>
+    </div>
 {% endblock %}
